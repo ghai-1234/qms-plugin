@@ -9,21 +9,18 @@
 
   <p>The params are :- </p> <br>
 
-  <h2>PID: <span id="pid"></span></h2>
-  <h2>Userid: <span id="userid"></span></h2>
-  <h2>Date: <span id="date"></span></h2>
+  <h2>Parameter Values</h2>
+<div id="output"></div>
 
 <script>
   const params = new URLSearchParams(window.location.search);
+  const outputDiv = document.getElementById("output");
 
-  const pid = params.get("hsplugin-pid");
-  const userid = params.get("hsplugin-userid");
-  const date = params.get("hsplugin-date");
-
-  document.getElementById("pid").textContent = pid;
-  document.getElementById("userid").textContent = userid;
-    document.getElementById("date").textContent = date;
-
+  params.forEach((value, key) => {
+    const p = document.createElement("p");
+    p.textContent = key + " = " + value;
+    outputDiv.appendChild(p);
+  });
 </script>
 
 
