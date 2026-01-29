@@ -25,6 +25,34 @@ window.HSPLUGIN("login", {
     tokenInputEl.value = data.token;
     issueInputEl.value = data.context.issueId;
     agentInputEl.value = data.agentEmail;
+
+// Create a container to print params
+const paramsContainer = document.createElement("div");
+paramsContainer.style.marginTop = "20px";
+const params = data.context.urlParamsFromParent;
+
+const heading = document.createElement("h3");
+heading.innerText = "URL Parameters";
+paramsContainer.appendChild(heading);
+
+// If no params
+if ([...params.keys()].length === 0) {
+  const p = document.createElement("p");
+  p.innerText = "No URL parameters found.";
+  paramsContainer.appendChild(p);
+} else {
+  params.forEach((value, key) => {
+    const p = document.createElement("p");
+    p.innerText = `${key} = ${value}`;
+    paramsContainer.appendChild(p);
+  });
+}
+
+// Attach to page
+document.body.appendChild(paramsContainer);
+
+
+
   },
   onFailure: () => {
     console.log("Login failure");
@@ -51,28 +79,4 @@ window.HSPLUGIN("addEventListener", {
   }
 });
 
-const params = new URLSearchParams(window.location.search);
 
-// Create a container to print params
-const paramsContainer = document.createElement("div");
-paramsContainer.style.marginTop = "20px";
-
-const heading = document.createElement("h3");
-heading.innerText = "URL Parameters";
-paramsContainer.appendChild(heading);
-
-// If no params
-if ([...params.keys()].length === 0) {
-  const p = document.createElement("p");
-  p.innerText = "No URL parameters found.";
-  paramsContainer.appendChild(p);
-} else {
-  params.forEach((value, key) => {
-    const p = document.createElement("p");
-    p.innerText = `${key} = ${value}`;
-    paramsContainer.appendChild(p);
-  });
-}
-
-// Attach to page
-document.body.appendChild(paramsContainer);
