@@ -1,28 +1,33 @@
-<!DOCTYPE html>
 <html>
-<head>
-  <title>My First Website</title>
-</head>
-<body>
-  <h1>Hello World!</h1>
-  <p>This is my first website hosted on GitHub Pages.</p><br>
-
-  <p>The params are :- </p> <br>
-
-  <h2>Parameter Values</h2>
-<div id="output"></div>
-
-<script>
-  const params = new URLSearchParams(window.location.search);
-  const outputDiv = document.getElementById("output");
-
-  params.forEach((value, key) => {
-    const p = document.createElement("p");
-    p.textContent = key + " = " + value;
-    outputDiv.appendChild(p);
-  });
-</script>
-
-
-</body>
+    <head>
+        <title>Test HS Plugin</title>
+        <script src="https://sbox-identity-user-panel-dev.helpshift.mobi/static/bundles/hsplugin/hsplugin-min.js"></script>
+        <link rel="stylesheet" href="main.css"/>
+    </head>
+    <body>
+        <div class="main-container">
+            <div class="info" id="status"></div>
+            <div class="info">
+                <label for="token">Token :</label>
+                <input name="token" id="token" disabled />
+            </div>
+            <div class="info">
+                <label for="agent">Logged-in user email :</label>
+                <input name="agent" id="agent" disabled />
+            </div>
+            <div class="info">
+                <label for="issue">Shown Issue ID :</label>
+                <input name="issue" id="issue" disabled />
+            </div>
+            <div class="info">
+                <label for="user">User ID : </label>
+                <input name="user" id="user" disabled />
+            </div>
+            <div class="info">
+                <label for="visibility">Visibility : </label>
+                <input name="visibility" id="visibility" disabled />
+            </div>
+        </div>
+    </body>
+    <script src="app.js"></script>
 </html>
